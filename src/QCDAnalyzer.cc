@@ -155,6 +155,9 @@ dijetEtaWeights_(iConfig.getParameter<std::vector<double> >("dijetEtaWeights"))
    hist_["qscale"] = fs->make<TH1F>("qscale",";p_{T}-hat;counts",
                            1000,0.,1000.);
 
+   hist_["lead_track"] = fs->make<TH1F>("lead_track",";p_{T};counts",
+                           1000,0.,1000.);
+
    hist_["events"] = fs->make<TH1F>("events",";;events",1,0.,2.);
    hist_["events_DS"] = fs->make<TH1F>("events_DS",";;double sided events",1,0.,2.);
 
@@ -231,29 +234,7 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
    if(isDS) hist_["events_DS"]->Fill(1);
    hist_["qscale"]->Fill(genEvtInfo->qScale());
 
-   // quick test for flavor matching
-   /*
-   if ( doFlavor_)
-   {
-     std::cout << "Jets in this event:" << std::endl;
-     for( const auto & jet : *gcol ) 
-       std::cout << "  pT= " << jet.pt() << "  eta= " << jet.eta() << std::endl;
-     std::cout << "Matched jets in this event:" << std::endl;
-     for( const auto & mjp : *fcol )
-     {
-        const reco::Jet *aJet = mjp.first.get();
-        const reco::MatchedPartons aMatch = mjp.second;
-        if( aMatch.physicsDefinitionParton().isNonnull() )
-        {
-          std::cout << "  pT= " << aJet->pt() << "  eta= " << aJet->eta()  
-                    << "  flavor= " << aMatch.physicsDefinitionParton().get()->pdgId() << std::endl; 
-        } else {
-          std::cout << "  pT= " << aJet->pt() << "  eta= " << aJet->eta()
-                    << "  unmatched! " << std::endl;
-        }   
-     }  
-   }
-   */
+
 
    // genjet spectra
    for( const auto & jet : *gcol )
@@ -310,11 +291,14 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
    } 
 
    // charged particle spectra and convolution matrix
+   double lead_track_pt = 0.0;
    for( const auto & h : *pcol )
    {
      // skip decayed and neutral particles
      if( h.status() != 1 || h.charge() == 0  ) continue;
 
+     if( fabs(h.eta()) < 2.5 && lead_track_pt < h.pt() )
+       lead_track_pt = h.pt(); 
 
      if( h.eta() <= etaMax_ - jetRadius_ && h.eta() >= etaMin_ + jetRadius_ )
      {
@@ -377,6 +361,7 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
      }
    }
 
+   hist_["lead_track"]->Fill(lead_track_pt);
    // determine dijet eta and fill related histograms
    double leadJetPt = 0.0;
    double leadJetPhi = 0.0;
