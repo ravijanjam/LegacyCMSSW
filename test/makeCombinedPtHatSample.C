@@ -13,8 +13,10 @@ void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * o
   // Input files
   TFile * f[MAX_BINS];
   for( int i=0; i<n;i++)
+  {
+    cout << "Opening input file: " << inputFiles[i] << endl;
     f[i] = new TFile(inputFiles[i]);
-
+  }
   // Target file
   TFile * target = new TFile(outputFile,"RECREATE"); 
 
@@ -46,6 +48,7 @@ void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * o
       // now enter the subdirectory
       TString path( (char*)strstr( newdir->GetPath(), ":" ) );
       path.Remove( 0, 2 );      
+      cout << "Entering directory " << path << endl;
       f[0]->cd( path );
 
       // count events for each pthat sample in the current subdirectory
@@ -53,7 +56,6 @@ void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * o
       strcpy( heventpath, path.Data() );
       strcat(heventpath,"/");
       strcat(heventpath,eventHistName);
-      cout << heventpath << endl;
        
       double nevent[MAX_BINS];
 
@@ -79,18 +81,15 @@ void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * o
 
         if ( obj2->IsA()->InheritsFrom( TH1::Class() ) ) {
          // descendant of TH1 -> merge it
-         cout << "Merging histogram " << obj2->GetName() << endl;
-         if( ! strcmp(obj2->GetName(),"events") )
-         {
-           cout << "  this is the events histogram, skip it" << endl;  
+
+         // skip the events histogram
+         if( ! strcmp(obj2->GetName(),eventHistName) )
            continue;
-         }
          
          char hpath[256]; 
          strcpy(hpath,path.Data()); 
          strcat(hpath,"/"); 
          strcat(hpath,obj2->GetName());
-         cout << " histogram path " << hpath << endl; 
 
          TH1 *hin[MAX_BINS];
          for(int i=0; i<n; i++)
@@ -107,12 +106,8 @@ void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * o
          hin[0]->Write(); 
 
         }
-
       }
-
     }
-
   } 
-
   
 }
