@@ -5,7 +5,7 @@ void examplePtHatCombination()
 
   int n = 10;
 
-  double xsec[10] = {   7.842e+01,
+  double xsec[10] = {  7.842e+01,
                        6.506e-01,
                        1.576e-01,
                        2.103e-02,
@@ -16,19 +16,18 @@ void examplePtHatCombination()
                        5.902e-06,
                        2.549e-06 };  
 
-
-
-  char rpthats[10][256] = {"0to20","20to30","30to50","50to80",
-                           "80to120","120to170","170to230",
-                           "230to300","300to380","380to10000"};
-
-
-  char * inputFiles[10];
-  for( int i=0; i<n;i++)
-  {
-    if (i == 0 ) inputFiles[i] = Form("AnaQCD_4C_13000TeV_inelastic_%s_numEvent100000.root",rpthats[i]);
-    if (i != 0 ) inputFiles[i] = Form("AnaQCD_4C_13000TeV_HardQCDAll_%s_numEvent100000.root",rpthats[i]);
-  }
+  char * inputFiles[10] = {
+     "AnaQCD_4C_13000TeV_inelastic_0to20_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_20to30_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_30to50_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_50to80_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_80to120_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_120to170_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_170to230_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_230to300_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_300to380_numEvent100000.root",
+     "AnaQCD_4C_13000TeV_HardQCDAll_380to10000_numEvent100000.root"
+  };
 
   char outputFile[256] = "AnaQCD_4C_13000TeV_Combined.root";
 
