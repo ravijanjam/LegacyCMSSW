@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-qcdAna = cms.EDAnalyzer('QCDAnalyzer'
+qcdAna = cms.EDAnalyzer('QCDAnalyzer',
     genJetSrc = cms.InputTag("ak3GenJets"),
     genParticleSrc = cms.InputTag("genParticles"),
     doFlavor = cms.bool(False),
