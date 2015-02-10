@@ -16,7 +16,7 @@ void examplePtHatCombination()
                        5.902e-06,
                        2.549e-06 };  
 
-  char * inputFiles[10] = {
+  const char * inputFiles[10] = {
      "AnaQCD_4C_13000TeV_inelastic_0to20_numEvent100000.root",
      "AnaQCD_4C_13000TeV_HardQCDAll_20to30_numEvent100000.root",
      "AnaQCD_4C_13000TeV_HardQCDAll_30to50_numEvent100000.root",
@@ -29,7 +29,7 @@ void examplePtHatCombination()
      "AnaQCD_4C_13000TeV_HardQCDAll_380to10000_numEvent100000.root"
   };
 
-  char outputFile[256] = "AnaQCD_4C_13000TeV_Combined.root";
+  const char outputFile[256] = "AnaQCD_4C_13000TeV_Combined.root";
 
   makeCombinedPtHatSample(n,xsec,inputFiles,outputFile);
 

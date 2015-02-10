@@ -1,4 +1,4 @@
-void makeCombinedPtHatSample(int n, double * xsec, char * inputFiles[], char * outputFile , char * eventHistName = "events")
+void makeCombinedPtHatSample(int n, const double * xsec, const char * inputFiles[], const char * outputFile , const char * eventHistName = "events")
 {
 
   // number of pthat bins
