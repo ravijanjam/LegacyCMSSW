@@ -2,7 +2,8 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('GEN')
 
-# import of standard configurations
+# ========= Import of Standard Configurations ==============
+
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
@@ -12,7 +13,7 @@ process.load("PhysicsTools.HepMCCandAlgos.genParticles_cfi")
 process.load("RecoJets.Configuration.GenJetParticles_cff")
 process.load("RecoJets.Configuration.RecoGenJets_cff")
 
-# ================= var parsing ======================
+# ================= Input Variable Parsing ======================
 
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing ('standard')
@@ -52,11 +53,13 @@ options.register('ptHatHigh',
 
 options.parseArguments()
 
+
+# ===================== General Settings ===================
+
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(options.maxEvents)
 )
 
-# Input source
 process.source = cms.Source("EmptySource")
 
 process.options = cms.untracked.PSet(
@@ -64,9 +67,6 @@ process.options = cms.untracked.PSet(
     makeTriggerResults = cms.untracked.bool(True),
     wantSummary = cms.untracked.bool(True)
 )
-
-# Other statements
-#process.genstepfilter.triggerConditions=cms.vstring("generation_step")
 
 process.MessageLogger.cerr.FwkReport.reportEvery = 100
 
@@ -79,12 +79,13 @@ from IOMC.RandomEngine.RandomServiceHelper import RandomNumberServiceHelper
 randSvc = RandomNumberServiceHelper(process.RandomNumberGeneratorService)
 randSvc.populate()
 
+# ============= PYTHIA Generator =====================
+
 process.generator = cms.EDFilter("Pythia8GeneratorFilter",
     pythiaPylistVerbosity = cms.untracked.int32(0),
     filterEfficiency = cms.untracked.double(1),
     pythiaHepMCVerbosity = cms.untracked.bool(False),
     comEnergy = cms.double(13000.0),
-    #crossSection = cms.untracked.double(175007.8),
     maxEventsToPrint = cms.untracked.int32(0),
     PythiaParameters = cms.PSet(
        processParameters = cms.vstring(),
@@ -92,35 +93,20 @@ process.generator = cms.EDFilter("Pythia8GeneratorFilter",
     )
 )
 
-
-# update the process parameters and c.o.m energy
 from customisePYTHIA8_cfi import *
 updatePy8ProcParameters(process.generator,options.tune,options.processType,options.ptHatLow,options.ptHatHigh,options.sqrtS)
 
 print process.generator.PythiaParameters.processParameters
 
-process.gen_step = cms.Path(process.generator
-                            * process.genParticles )
 
-# update the process parameters and c.o.m energy
-#from customiseGEN2_cfi import *
-#updatePy6ProcParameters(process.generator,options.processType,options.ptHatLow,options.ptHatHigh,options.sqrtS)
+# ============= Gen Jets ================================
 
-#print process.generator.PythiaParameters.processParameters
-
-# ============= Gen jet ================================
 process.ak3GenJets = process.ak5GenJets.clone( rParam = 0.3 )
 process.ak4GenJets = process.ak5GenJets.clone( rParam = 0.4 )
 process.ak7GenJets = process.ak5GenJets.clone( rParam = 0.7 )
 
-process.genjet_step = cms.Path(process.genJetParticles 
-                               * process.ak3GenJets
-                          #     * process.ak4GenJets
-                          #     * process.ak5GenJets
-                          #     * process.ak7GenJets
-)
 
-# flavor matching
+# ========== Flavor Matching ==========================
 
 process.myPartons = cms.EDProducer("PartonSelector",
     withLeptons = cms.bool(False),
@@ -133,30 +119,117 @@ process.flavourByRef = cms.EDProducer("JetPartonMatcher",
     partons = cms.InputTag("myPartons")
 )
 
-process.flavor_step = cms.Path( process.myPartons * process.flavourByRef )
 
 # =============== Analysis =============================
+
 process.qcdAna = cms.EDAnalyzer('QCDAnalyzer',
     genJetSrc = cms.InputTag("ak3GenJets"),
     genParticleSrc = cms.InputTag("genParticles"),
-    doCMatrix = cms.bool(True),
-    doFlavor = cms.bool(True),
+    doFlavor = cms.bool(False),
+    doSpecies = cms.bool(False),
+    onlyDS = cms.bool(False),
     flavorSrc = cms.InputTag("flavourByRef"),
-    flavorId = cms.vint32(0),
-    jetsByAbsRapidity = cms.bool(False),
-    etaMin = cms.double(-1.0),
-    etaMax = cms.double(1.0),
+    flavorId = cms.vint32(21), # gluons
+    speciesId = cms.vint32(11), # gamma
+    useRapidity = cms.bool(False),
+    jetEtaMin = cms.double(-0.5),
+    jetEtaMax = cms.double(0.5),
+    hEtaMin = cms.double(-1.0),
+    hEtaMax = cms.double(1.0),
     jetRadius = cms.double(0.3),
     pthatMin = cms.double(options.ptHatLow),
     pthatMax = cms.double(options.ptHatHigh),
-    ptBins = cms.vdouble( 3, 4, 5, 7, 9, 12, 15, 18, 22, 27, 33, 39, 47, 55, 64, 74, 84, 97, 114, 133, 153, 174, 196, 220, 245, 272, 300, 429, 692, 1000 ),
-    pythiaProcess = cms.string(options.processType ),
-    dijetEtaBins = cms.vdouble( -3.01, -2.63333, -2.07, -1.78833, -1.50667, -1.225, -0.943333, -0.661667, -0.38, -0.0983333, 0.183333, 0.465, 0.746667, 1.02833, 1.31, 1.59167, 1.87333, 2.43667, 3.0),
-    dijetEtaWeights = cms.vdouble( 1, 0.772085, 0.701301, 0.753585, 0.813741, 0.882849, 0.943137, 0.977332, 0.993655, 1.0375, 1.04713, 1.04826, 1.05517, 1.05983, 1.0723, 1.06945, 1.01587, 1.41731 )    
+    jetPtBins = cms.vdouble(), 
+    hPtBins = cms.vdouble(), 
+    etaBins = cms.vdouble() 
 )
 
+# hadron pT bins from 0 to 200 in increments of 2
+# jet pT bins from 0 to 1000 in increments of 10
+for x in range(0,101):
+  process.qcdAna.hPtBins += [ float(x)*2.0 ]
+  process.qcdAna.jetPtBins += [ float(x)*10.0 ]
+
+#eta bins from -2.4 to 2.4 in increments of 0.4
+for x in range(0,13):
+  process.qcdAna.etaBins += [ float(x)*0.4-2.4 ]
+
+longLivedBaryonIDs = cms.vint32( 2212, -2212, # p (pbar)
+                                 2112, -2112, # n
+                                 3122, -3122, # lambda
+                                 3222, -3222, # sigma+
+                                 3112, -3112, # sigma-
+                                 3312, -3312, # xi
+                                 3334, -3334  # omega
+)
+
+longLivedMesonIDs = cms.vint32( 211, -211, # pion
+                                130, 310, 321, -321, # K
+)
+
+quarks = cms.vint32( -6,-5,-4,-3,-2,-1,1,2,3,4,5,6 )
+
+process.qcdAna_baryons = process.qcdAna.clone(
+    doSpecies = cms.bool(True),
+    speciesId = longLivedBaryonIDs
+)
+
+process.qcdAna_mesons = process.qcdAna.clone(
+    doSpecies = cms.bool(True),
+    speciesId = longLivedMesonIDs
+)                             
+
+process.qcdAna_qJets = process.qcdAna.clone( 
+    doFlavor = cms.bool(True),
+    flavorId = quarks
+)
+
+process.qcdAna_qJets_baryons = process.qcdAna_baryons.clone(
+    doFlavor = cms.bool(True),
+    flavorId = quarks
+)
+
+process.qcdAna_qJets_mesons = process.qcdAna_mesons.clone(
+    doFlavor = cms.bool(True),
+    flavorId = quarks
+)
+
+process.qcdAna_gJets = process.qcdAna.clone(
+    doFlavor = cms.bool(True),
+    flavorId = cms.vint32(21) 
+)
+
+process.qcdAna_gJets_baryons = process.qcdAna_baryons.clone(
+    doFlavor = cms.bool(True),
+    flavorId = cms.vint32(21) 
+)
+
+process.qcdAna_gJets_mesons = process.qcdAna_mesons.clone(
+    doFlavor = cms.bool(True),
+    flavorId = cms.vint32(21) 
+)
+
+
+# ================== Paths and Schedule ===================
+
+process.gen_step = cms.Path(process.generator * process.genParticles )
+process.genjet_step = cms.Path(process.genJetParticles 
+                               * process.ak3GenJets
+                          #     * process.ak4GenJets
+                          #     * process.ak5GenJets
+                          #     * process.ak7GenJets
+)
+process.flavor_step = cms.Path( process.myPartons * process.flavourByRef )
 process.ana_step = cms.Path(
-    process.qcdAna
+    process.qcdAna *
+    process.qcdAna_baryons *
+    process.qcdAna_mesons *
+    process.qcdAna_qJets *
+    process.qcdAna_qJets_baryons *
+    process.qcdAna_qJets_mesons *
+    process.qcdAna_gJets *
+    process.qcdAna_gJets_baryons *
+    process.qcdAna_gJets_mesons 
 )
 
 process.schedule = cms.Schedule(process.gen_step,
@@ -164,15 +237,3 @@ process.schedule = cms.Schedule(process.gen_step,
                                 process.flavor_step,
                                 process.ana_step)
 
-#process.genfiltersummary_step = cms.EndPath(process.genFilterSummary)
-
-# Schedule definition
-#process.schedule = cms.Schedule(process.generation_step,process.genfiltersummary_step)
-
-# filter all path with the production filter sequence
-#for path in process.paths:
-#	getattr(process,path)._seq = process.generator * getattr(process,path)._seq 
-
-# customisation of the process.
-
-# End of customisation functions
