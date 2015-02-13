@@ -349,10 +349,8 @@ QCDAnalyzer::isInFlavor( const reco::MatchedPartons & aMatch )
   int flavor = 0;
   if( aMatch.heaviest().isNonnull() )
   {
-    std::cout << "got a match " << std::endl;
     flavor = aMatch.heaviest().get()->pdgId();
   }
-  std::cout << "Found jet with flavor = " << flavor << std::endl;
   for( const auto inFlavor : flavorId_ )
   { if( flavor == inFlavor ) return true; }
  
