@@ -141,14 +141,17 @@ process.qcdAna = cms.EDAnalyzer('QCDAnalyzer',
     pthatMax = cms.double(options.ptHatHigh),
     jetPtBins = cms.vdouble(), 
     hPtBins = cms.vdouble(), 
+    qScalePtBins = cms.vdouble(), 
     etaBins = cms.vdouble() 
 )
 
 # hadron pT bins from 0 to 200 in increments of 2
 # jet pT bins from 0 to 1000 in increments of 10
+# qscale pT bins from 0 to 1000 in increments of 10
 for x in range(0,101):
   process.qcdAna.hPtBins += [ float(x)*2.0 ]
   process.qcdAna.jetPtBins += [ float(x)*10.0 ]
+  process.qcdAna.qScalePtBins += [ float(x)*10.0 ]
 
 #eta bins from -2.4 to 2.4 in increments of 0.4
 for x in range(0,13):

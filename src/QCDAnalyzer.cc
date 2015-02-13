@@ -101,6 +101,7 @@ class QCDAnalyzer : public edm::EDAnalyzer {
       double pthatMax_;
       std::vector<double> jetPtBins_;
       std::vector<double> hPtBins_;
+      std::vector<double> qScalePtBins_;
       std::vector<double> etaBins_;
 
       std::map<std::string,TH1F*> hist_;
@@ -131,6 +132,7 @@ pthatMin_(iConfig.getParameter<double>("pthatMin")),
 pthatMax_(iConfig.getParameter<double>("pthatMax")),
 jetPtBins_(iConfig.getParameter<std::vector<double> >("jetPtBins")),
 hPtBins_(iConfig.getParameter<std::vector<double> >("hPtBins")),
+qScalePtBins_(iConfig.getParameter<std::vector<double> >("qScalePtBins")),
 etaBins_(iConfig.getParameter<std::vector<double> >("etaBins"))
 {
    edm::Service<TFileService> fs;
@@ -169,7 +171,13 @@ etaBins_(iConfig.getParameter<std::vector<double> >("etaBins"))
    // pt-hat or momentum transfer scale of PYTHIA process
    // this will be 0 for diffractive events
    hist_["qscale"] = fs->make<TH1F>("qscale",";p_{T}-hat;counts",
-                           1000,0.,1000.);
+                           qScalePtBins_.size()-1, &qScalePtBins_[0]);
+   hist2D_["ch_qscale2D"] = fs->make<TH2F>("ch_qscale2D",";p_{T}-hat;p_{T} h^{#pm}",
+                           qScalePtBins_.size()-1, &qScalePtBins_[0],
+                           hPtBins_.size()-1, &hPtBins_[0]);
+   hist2D_["jet_qscale2D"] = fs->make<TH2F>("jet_qscale2D",";p_{T}-hat;p_{T} h^{#pm}",
+                           qScalePtBins_.size()-1, &qScalePtBins_[0],
+                           jetPtBins_.size()-1, &jetPtBins_[0]);
 
    // leading charged hadron in approximate tracker acceptance (|eta|<2.5)
    hist_["lead_track"] = fs->make<TH1F>("lead_track",";p_{T};counts",
@@ -180,13 +188,13 @@ etaBins_(iConfig.getParameter<std::vector<double> >("etaBins"))
 
    // fragmentation function matrix - i.e. 2D histogram of hadrons vs jets
    // also for just charged and positively charged hadrons
-   hist2D_["ffmatrix"] = fs->make<TH2F>("ffmatrix",";p_{T} Jet;p_{T} h^{#pm}",
+   hist2D_["ffmatrix"] = fs->make<TH2F>("ffmatrix",";p_{T} Jet;p_{T} h",
                            hPtBins_.size()-1, &hPtBins_[0],
                            jetPtBins_.size()-1, &jetPtBins_[0]);
    hist2D_["cffmatrix"] = fs->make<TH2F>("cffmatrix",";p_{T} Jet;p_{T} h^{#pm}",
                            hPtBins_.size()-1, &hPtBins_[0],
                            jetPtBins_.size()-1, &jetPtBins_[0]);
-   hist2D_["pcffmatrix"] = fs->make<TH2F>("pcffmatrix",";p_{T} Jet;p_{T} h^{#pm}",
+   hist2D_["pcffmatrix"] = fs->make<TH2F>("pcffmatrix",";p_{T} Jet;p_{T} h^{+}",
                            hPtBins_.size()-1, &hPtBins_[0],
                            jetPtBins_.size()-1, &jetPtBins_[0]);
 
@@ -243,7 +251,11 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
      {
         if( ! isInFlavor( mjp.second ) ) continue;
         const reco::Jet *aJet = mjp.first.get();
-        if( isInEtaRange( *aJet, jetEtaMin_, jetEtaMax_ ) ) hist_["jetspectrum"]->Fill(aJet->pt());
+        if( isInEtaRange( *aJet, jetEtaMin_, jetEtaMax_ ) ) 
+        {
+           hist_["jetspectrum"]->Fill(aJet->pt());
+           hist2D_["jet_qscale2D"]->Fill(genEvtInfo->qScale(),aJet->pt());
+        }
         hist2D_["jetspectrum2D"]->Fill(aJet->eta(),aJet->pt());
      }
    }
@@ -251,7 +263,11 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
    {
      for( const auto & jet : *gcol )
      {
-       if( isInEtaRange( jet, jetEtaMin_, jetEtaMax_ ) ) hist_["jetspectrum"]->Fill(jet.pt());
+       if( isInEtaRange( jet, jetEtaMin_, jetEtaMax_ ) ) 
+       {
+         hist_["jetspectrum"]->Fill(jet.pt());
+         hist2D_["jet_qscale2D"]->Fill(genEvtInfo->qScale(),jet.pt());
+       }
        hist2D_["jetspectrum2D"]->Fill(jet.eta(),jet.pt());
      }
    }
@@ -278,6 +294,7 @@ QCDAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
      {
        hist_["hspectrum"]->Fill(h.pt());
        if( h.charge() != 0 ) hist_["chspectrum"]->Fill(h.pt());
+       if( h.charge() != 0 ) hist2D_["ch_qscale2D"]->Fill(genEvtInfo->qScale(),h.pt());
        if( h.charge() > 0 ) hist_["pchspectrum"]->Fill(h.pt());
 
        // associate with the highest-pt jet for which 
