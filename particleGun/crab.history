@@ -1,0 +1,6 @@
+140818_142934: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7/python/crab.py -create
+140818_143036: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7/python/crab.py -submit 1-10 -c crab_0_140818_142934
+140820_125834: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7/python/crab.py -create 1-100 crab.cfg
+140820_125937: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7/python/crab.py -submit 1-10 -c crab_0_140820_125834
+140820_130114: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7/python/crab.py -status
+140908_095622: /cvmfs/cms.cern.ch/crab/CRAB_2_10_7_patch1/python/crab.py -create -submit -cfg crab.cfg
