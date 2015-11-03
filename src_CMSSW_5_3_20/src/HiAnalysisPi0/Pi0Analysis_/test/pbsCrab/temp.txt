@@ -1,0 +1,1000 @@
+   30  ls
+   31  cd pbsCrab/
+   32  ls
+   33  vi ecalReconstructedPi0_cfg.py
+   34  cp /home/janjamrk/CMSSW_5_3_8_HI_patch2Charlie/src/Pi0Analysis/EcalFlowNtp/ppRun2013/ecalflowntp_ppMinBiasHighMass_cfg.py
+   35  cp /home/janjamrk/CMSSW_5_3_8_HI_patch2Charlie/src/Pi0Analysis/EcalFlowNtp/ppRun2013/ecalflowntp_ppMinBiasHighMass_cfg.py ./
+   36  ls
+   37  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+   38  fg
+   39  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py 
+   40  fg
+   41  python 
+   42  python ecalReconstructedPi0_cfg.py
+   43  fg
+   44  vi fg
+   45  vi ecalReconstructedPi0_cfg.py
+   46  grep -R ecalflowntp_cfi* ../../../../
+   47  pwd
+   48  fg
+   49  vi ecalflowntp_ppMinBiasHighMass_cfg.py 
+   50  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   51  ls
+   52  vi ecalReconstructedPi0_cfg.py
+   53  ls *.py
+   54  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+   55  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   56  fg
+   57  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+   58  fg
+   59  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   60  fg
+   61  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   62  fg
+   63  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   64  fg
+   65  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   66  fg
+   67  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   68  fg
+   69  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   70  fg
+   71  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   72  fg
+   73  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   74  /fg
+   75  fg
+   76  /fg
+   77  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   78  fg
+   79  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   80  fg
+   81  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   82  fg
+   83  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   84  fg
+   85  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   86  fg
+   87  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   88  fg
+   89  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   90  fg
+   91  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   92  fg
+   93  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   94  fg
+   95  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   96  fg
+   97  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+   98  fg
+   99  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  100  /fg
+  101  fg
+  102  /fg
+  103  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  104  fg
+  105  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  106  ls -l 
+  107  ls *.root
+  108  root -l pp_NoReCal_15February2014V1.root
+  109  fg
+  110  ls
+  111  cp crabPBS.cfg
+  112  cp crabPBS.cfg crab_pPb.cfg
+  113  cp crabPBS.cfg crab_pp.cfg
+  114  vi crab_pp.cfg 
+  115  cp /home/janjamrk/CMSSW_5_3_8_HI_patch2Charlie/src/Pi0Analysis/EcalFlowNtp/ppRun2013/Cert_211765-211831_2760GeV_PromptReco_Collisions13_JSON.txt ./
+  116  ls
+  117  ls *.txt
+  118  vi crab_pp.cfg 
+  119  python crab_pp.cfg 
+  120  vi crab_pPb.cfg 
+  121  crab -create -cfg crab_pp.cfg 
+  122  scrab
+  123  crab -create -cfg crab_pp.cfg 
+  124  crab -submit 1-134 -c crab_0_140926_130002
+  125  crab -status crab_0_140926_130002
+  126  crab -status
+  127  ls
+  128  mkdir ~/Repository
+  129  cp crab_pPb.cfg ~/Repository/ 
+  130  cp crab_pp.cfg ~/Repository/ 
+  131  ldir
+  132  cd crab_0_140926_130002/res/
+  133  ls
+  134  ls *.root
+  135  vi tmp_CMSSW_11.stdout
+  136  cd ../..
+  137  ls
+  138  cmsRun ecalReconstructedPi0_cfg.py
+  139  ls
+  140  cmsRun  ecalflowntp_ppMinBiasHighMass_cfg.py 
+  141  ls
+  142  root -l pp_NoReCal_15February2014V1.root
+  143  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  144  cmsRun ecalReconstructedPi0_cfg.py
+  145  ls *.rot
+  146  ls *.root
+  147  ls -l *.ro
+  148  ls -l *.root
+  149  root -l pPb_PAHighPt_PeakRegion1_17_YesEnrCorr_S4S9_074_YesEffCorr_NoClusterLimit_S25_02.root
+  150  ls
+  151  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  152  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  153  fg
+  154  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  155  ls
+  156  ls -l *.root
+  157  root -l pp_NoReCal_15February2014V1.root
+  158  root -l pp_NoReCal_15February2014V1.root 
+  159  ls
+  160  rm pp_NoReCal_15February2014V1.root
+  161  vi ecalReconstructedPi0_cfg_ppTesting.py
+  162  f
+  163  fg
+  164  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  165  ls -l *.root
+  166  root -l pp_NoReCal_15February2014V1.root
+  167  ls
+  168  vi crab_pp.cfg 
+  169  ls *.py
+  170  vi ecalReconstructedPi0_cfg_ppTesting.py
+  171  crab -create -cfg crab_pp.cfg 
+  172  crab -submit 1-134 -c crab_0_140926_140906
+  173  ls
+  174  ldir
+  175  rm -rf crab_0_140926_130002/
+  176  crab -status crab_0_140926_140906/
+  177  crab -status
+  178  vi crab_0_140926_140906/log/crab.log
+  179  crab -status crab_0_140926_140906 | grep Terminated
+  180  ls
+  181  ldir 
+  182  type -a ldir
+  183  crab -status crab_0_140926_140906/
+  184  crab -status
+  185  ls
+  186  ssh ce1
+  187  grid-proxy-init
+  188  /usr/local/bin/check_grid_service_sanity.sh
+  189  ls
+  190  cd CMSSW_5_3_20
+  191  ls
+  192  clear
+  193  ls
+  194  cd src/
+  195  ls
+  196  cd HiAnalysisPi0/
+  197  ls
+  198  cd Pi0Analysis_/
+  199  ls
+  200  cd test/
+  201  ls
+  202  cd pbsCrab/
+  203  ls
+  204  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  205  cmsenv
+  206  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  207  ls
+  208  ldir
+  209  scrab
+  210  crab -status 
+  211  ls
+  212  vi crab_pp.cfg 
+  213  fg
+  214  crab -create crab_pp.cfg 
+  215  crab -kill all crab_0_140929_103722
+  216  ls
+  217  fg
+  218  vi crab_pp.cfg 
+  219  ldir
+  220  rm -rf crab_0_140926_140906/
+  221  crab -status
+  222  crab -submit 1-500 -c crab_0_140929_103722
+  223  crab -status 
+  224  crab -submit 500-825 crab_0_140929_103722
+  225  ls
+  226  cmsRun ecalReconstructedPi0_cfg_ppTesting.py
+  227  crab -status 
+  228  ls *.cfg
+  229  vi crab_pp.cfg
+  230  ls
+  231  ls *.root
+  232  root -l TrackCorrections_HIJING_538_OFFICIAL_Mar24.root
+  233  ls
+  234  crab -status
+  235  ls
+  236  clear
+  237  ls -h
+  238  ls -a
+  239  vi .rhn-applet.conf
+  240  vi 
+  241  vi .swp
+  242  ls
+  243  exit
+  244  ls
+  245  cd CMSSW_5_3_20
+  246  ls
+  247  cd src/
+  248  ls
+  249  cd HiAnalysisPi0/
+  250  ls
+  251  cd Pi0Analysis_/
+  252  ls
+  253  cd test/
+  254  ls
+  255  cd pbsCrab/
+  256  ls
+  257  scrab
+  258  cmsenv
+  259  crab -status
+  260  crab -getoutput 2,4,7-8,17
+  261  ls
+  262  ldir
+  263  cd crab_0_140929_103722/
+  264  ls
+  265  cd res/
+  266  ls
+  267  hadd output.root *.root
+  268  ls
+  269  root -l output.root 
+  270  ls
+  271  vi CMSSW_4.stdout
+  272  cd ..
+  273  ls
+  274  cd res/
+  275  ls
+  276  vi crab_fjr_17.xml
+  277  cd ..
+  278  ls
+  279  cd ..
+  280  ls
+  281  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  282  fg
+  283  python -i ecalflowntp_ppMinBiasHighMass_cfg.py
+  284  ;ls
+  285  ls
+  286  python -i ecalflowntp_ppMinBiasHighMass_cfg.py
+  287  ls
+  288  crab -status
+  289  vi /gpfs22/home/janjamrk/CMSSW_5_3_20/src/HiAnalysisPi0/Pi0Analysis_/test/pbsCrab/crab_0_140929_103722/log/crab.log
+  290  ldir
+  291  crab -status crab_0_140929_103722/
+  292  ls
+  293  crab -create -cfg crab_pp.cfg 
+  294  vi crab_pp.cfg 
+  295  crab -submit 1-134 -c crab_0_140929_134841
+  296  vi /gpfs22/home/janjamrk/CMSSW_5_3_20/src/HiAnalysisPi0/Pi0Analysis_/test/pbsCrab/crab_0_140929_134841/log/crab.log
+  297  crab -status crab_0_140929_134841
+  298  vi /gpfs22/home/janjamrk/CMSSW_5_3_20/src/HiAnalysisPi0/Pi0Analysis_/test/pbsCrab/crab_0_140929_134841/log/crab.log
+  299  ls
+  300  vi ecalReconstructedPi0_cfg_ppTesting.py
+  301  vi crab_pp.cfg 
+  302  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  303  ldir
+  304  crab -status crab_0_140929_134841/
+  305  crab -status
+  306  crab -status crab_0_140929_134841
+  307  crab -getoutput 8,30
+  308  ls
+  309  cd 8,30
+  310  ls
+  311  clear
+  312  ldir
+  313  crab crab_0_140929_134841/
+  314  cd crab_0_140929_134841/
+  315  cd res/
+  316  ls
+  317  root -l pp_NoReCal_15February2014V1_30_1_1fE.root
+  318  vi tmp_CMSSW_25.stdout
+  319  ssh vmpsched
+  320  cd ..
+  321  ls
+  322  cd ..
+  323  ls
+  324  ldir
+  325  crab -status crab_0_140929_134841
+  326  crab -getoutput 9-11,15-16,22,26,28-29,101
+  327  cd crab_0_140929_134841/res/
+  328  ls
+  329  hadd output.root *.root
+  330  root -l
+  331  root -l output.root 
+  332  ls
+  333  vi tmp_CMSSW_105.stdout
+  334  cd ../..
+  335  ls
+  336  ldir
+  337  crab -status crab_0_140929_134841
+  338  crab -resubmit 8-11,15-16,22,26,28-30,101
+  339  crab -status crab_0_140929_134841
+  340  crab -getoutput 1,3-7,12-14,17,20-21,23-25,27,43-47,102
+  341  cd crab_0_140929_134841/res/
+  342  ls
+  343  ldir
+  344  ls -ltr
+  345  ls -ltr | grep *.root
+  346  ls -ltr | grep root
+  347  root -l pp_NoReCal_15February2014V1_23_1_cq5.root
+  348  rm output.root 
+  349  hadd output.root *.root
+  350  root -l output.root 
+  351  cd ../..
+  352  ls
+  353  ldir
+  354  crab -status crab_0_140929_134841/
+  355  crab -resubmit ,3-7,12-14,17,20-21,23-25,27,43-47,102 
+  356  crab -status
+  357  crab -getoutput 2,18-19,34-35,37,39-40,42,48-52,56-58,62-63,65,72,74,77,84-90,92,99-100,103-105 
+  358  cd crab_0_140929_134841/res/
+  359  ls
+  360  rm output.root 
+  361  ls
+  362  ls *.root
+  363  hadd output.root *.root
+  364  TBrowser b
+  365  root -l output.root 
+  366  ls
+  367  cd ../..
+  368  ls
+  369  crab -status
+  370  crab -resubmit 1-2,18-19,34-35,37,39-40,42,48-52,56-58,62-63,65,72,74,77,84-90,92,99-100,103-105 
+  371  ls
+  372  crab -status
+  373  crab -getoutput 8,31-33,36,38,41,53-55,59-61,64,66-71,73,75-76,78-83,91,93-96,98,111-128,134 
+  374  crab crab_0_140929_134841/res/
+  375  ls
+  376  cd crab_0_140929_134841/res/
+  377  ls outpu*
+  378  rm output.root 
+  379  hadd output.root *.root
+  380  root -l
+  381  root -l output.root 
+  382  ls
+  383  cd ..
+  384  ls
+  385  cd ..
+  386  ls
+  387  cd ..
+  388  cd src/
+  389  ls
+  390  vi ecalReconstructedPi0.cc 
+  391  ls
+  392  cd CMSSW_5_3_20
+  393  ls
+  394  cd test/
+  395  ls
+  396  cd ..
+  397  ls
+  398  cd src/
+  399  ls
+  400  cd HiAnalysisPi0/
+  401  ls
+  402  cd Pi0Analysis_/
+  403  ls
+  404  cd src/
+  405  ls
+  406  cd ..
+  407  ls
+  408  cd test/
+  409  ls
+  410  cd pbsCrab/
+  411  ls
+  412  scrab
+  413  cmsenv
+  414  crab -status
+  415  crab -getoutput 1-7,9-30,34-35,37,39-40,42-52,56-58,62-63,65,72,74,77,84-90,92,97,99-110,129-133
+  416  ls
+  417  ldir
+  418  cd crab_0_140929_134841/res/
+  419  ls
+  420  rm output.root 
+  421  hadd output.root *.root
+  422  root -l output.root 
+  423  ls
+  424  cd ../..
+  425  ls
+  426  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  427  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  428  ls
+  429  cd CMSSW_5_3_8_HI_patch2EcalValidation/
+  430  ls
+  431  cd sr
+  432  cd src/
+  433  ls
+  434  cd Validation/
+  435  ls
+  436  cd EcalDigis/
+  437  ls
+  438  cd test/
+  439  ls
+  440  vi SRValidData_cfg.py 
+  441  vi ----------------------------------------------------------------------------------------------------------------------------------
+  442  September 29th, 2014
+  443  vi SRValidationPlots.C
+  444  pwd
+  445  ls
+  446  ls -al ~/.ssh
+  447  ssh-keygen -t rsa -C "ravi.k.janjam@vanderbilt.edu"
+  448  ssh-agent -s
+  449  ssh-add ~/.ssh/id_rsa
+  450  vi ~/.ssh/id_rsa.pub 
+  451  gedit ~/.ssh/id_rsa.pub
+  452  clear
+  453  ls
+  454  mkdir github_repo
+  455  cd github_repo/
+  456  ls
+  457  vi hello.c
+  458  make hello.c 
+  459  git init
+  460  git status -s
+  461  git add hello.c 
+  462  git status s 
+  463  git status -s
+  464  git commit -m 'Initial commit'
+  465  git remote add origin https://github.com/ravijanjam/testing_repo
+  466  git push -u origin master
+  467  cat .git/config
+  468  git config --global user.name "Ravi Janjam"
+  469  git config --global user.email "ravi.k.janjam@vanderbilt.edu"
+  470  git remote add origin https://github.com/ravijanjam/testing_repo
+  471  mkdir project.git
+  472  cd project.git/
+  473  ls
+  474  git --bare init
+  475  ls
+  476  pwd
+  477  git log
+  478  git remote add origin gituser@git.server.com:project.git
+  479  git push origin master
+  480  ls -al ~/.ssh
+  481  ssh-keygen -t rsa -C ravi.k.janjam@vanderbilt.edu
+  482  ssh-agent -s
+  483  ssh-add ~/.ssh/id_rsa
+  484  gedit ~/.ssh/id_rsa.pub
+  485  eval `ssh-agent -s`
+  486  ssh-add
+  487  ls -al ~/.ssh
+  488  git push origin master
+  489  git remote add origin ravijanjam@git.server.com:project.git
+  490  git push origin master
+  491  ssh -T git@github.com
+  492  git push origin master
+  493  git --config
+  494  git config --list
+  495  ssh-copy-id -i ~/.ssh/id_rsa.pub gituser@git.server.com
+  496  git config --global user.name "Ravi Janjam"
+  497  git config --global user.email "ravi.k.janjam@vanderbilt.edu"
+  498  git config --list
+  499  git remote add origin ivarCMS@git.server.com:project.git
+  500  git remote add origin RaviCMS@git.server.com:project.git
+  501  git config --global --list
+  502  git config --global --remove-section user.name='ivarCMS'
+  503  git config --global --remove-section user.name="ivarCMS"
+  504  git config --global --remove-section user.name=RaviCMS
+  505  vi ~/.gitconfig
+  506  source vi ~/.gitconfig
+  507  source ~/.gitconfig
+  508  git config --global
+  509  git config --list
+  510  cd ~/.ssh/
+  511  ls
+  512  rm id_rsa
+  513  rm id_rsa.pub 
+  514  vi known_hosts 
+  515  rm known_hosts 
+  516  ls
+  517  ssh-keygent
+  518  ssh-keygen
+  519  ls
+  520  vi id_rsa
+  521  gedit id_rsa.pub 
+  522  ssh-copy-id -i ~/.ssh/id_rsa.pub gituser@git.server.com
+  523  ssh-copy-id -i ~/.ssh/id_rsa.pub ravijanjam@git.server.com
+  524  su
+  525  sudo adduser git
+  526  git log
+  527  ls
+  528  cd
+  529  ls
+  530  clear
+  531  ls
+  532  git push origin master
+  533  ls *.git
+  534  cd CMSSW_5_3_20
+  535  ls
+  536  cd src/
+  537  ls
+  538  cd HiAnalysisPi0/
+  539  ls
+  540  cd Pi0Analysis_/
+  541  ls
+  542  cd test/
+  543  ls
+  544  cd pbsCrab/
+  545  ls
+  546  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  547  vi ecalReconstructedPi0_cfg_ppTesting.py
+  548  clear
+  549  ls
+  550  ls *.py
+  551  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  552  ls
+  553  fg
+  554  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  555  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  556  cmsenv
+  557  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  558  fg
+  559  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  560  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  561  ls *.py
+  562  vi ecalReconstructedPi0_cfg_ppTesting.py
+  563  cmsRun ecalReconstructedPi0_cfg_ppTesting.py
+  564  ls
+  565  ls *.py
+  566  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  567  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  568  vi crab_pp.cfg 
+  569  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  570  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  571  fg
+  572  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  573  logmec
+  574  exit
+  575  logmec
+  576  exit
+  577  ls
+  578  cd CMSSW_5_3_20
+  579  ls
+  580  cd src/
+  581  ls
+  582  cd HiAnalysisPi0/
+  583  ls
+  584  cd i
+  585  cd Pi0Analysis_/
+  586  ls
+  587  cd src/
+  588  ls
+  589  vi ecalReconstructedPi0.cc 
+  590  grep Maguire /home/root/mapped_grid_users.txt
+  591  showq -r | grep 1398
+  592  grep rjanjam /home/root/mapped_grid_users.txt
+  593  grep janjamrk /home/root/mapped_grid_users.txt
+  594  grep xuq7 /home/root/mapped_grid_users.txt
+  595  clear
+  596  fg
+  597  cd ..
+  598  exit
+  599  ls
+  600  cd CMSSW_5_3_20
+  601  ls
+  602  cd src/
+  603  ls
+  604  cd HiAnalysisPi0/
+  605  ls
+  606  cd Pi0Analysis_/
+  607  ls
+  608  cd test/
+  609  ls
+  610  cd pbsCrab/
+  611  ls
+  612  cmsenv
+  613  ldir
+  614  crab -status crab_0_141001_144820/
+  615  scrab
+  616  crab -status crab_0_141001_144820/
+  617  ls
+  618  cd CMSSW_5_3_20
+  619  ls
+  620  cd src/
+  621  ls
+  622  cd HiAnalysisPi0/
+  623  ls
+  624  cd Pi0Analysis_/
+  625  ls
+  626  cd test/
+  627  ls
+  628  cd pbsCrab/
+  629  ls
+  630  scrab
+  631  cmsenv
+  632  ls -l
+  633  ls -l | grep 30
+  634  root -l pp_NoReCal_15February2014V1.root
+  635  ls
+  636  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  637  vi ecalReconstructedPi0_cfg_ppTesting.py
+  638  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  639  vi ecalReconstructedPi0_cfg.py
+  640  ls
+  641  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  642  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  643  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  644  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  645  root -l
+  646  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  647  fg
+  648  edmEventSize -v /store/data/Run2013A/PPMinBias/RECO/PromptReco-v1/000/211/658/00000/9AD37988-3175-E211-B0EB-0025901D5D7E.root
+  649  edmEventSize -v /store/data/Run2013A/PPMinBias/RECO/PromptReco-v1/000/211/658/00000/9AD37988-3175-E211-B0EB-0025901D5D7E.root | head
+  650  fg
+  651  cmsRun ecalflowntp_ppMinBiasHighMass_cfg.py
+  652  ls
+  653  ls -l
+  654  ls | grep 31
+  655  ls | grep Sep
+  656  ls 
+  657  ls -l *.root
+  658  root -l pp_NoReCal_15February2014V1.root
+  659  ls *.txt
+  660  ls
+  661  clear
+  662  ls
+  663  ldir
+  664  vi crab_pp.cfg 
+  665  crab -create -cfg crab_pp.cfg 
+  666  crab -submit 1-134 -c crab_0_141001_144820
+  667  crab -status crab_0_141001_144820
+  668  cd
+  669  ls
+  670  git init
+  671  git add .
+  672  git commit -m 'initial commit'
+  673  git push origin master
+  674  vi /etc/passwd
+  675  ssh git@gitserver
+  676  ls
+  677  ls p*
+  678  cd ..
+  679  ls
+  680  cd
+  681  ls
+  682  mkdir git_testing
+  683  cd git_testing/
+  684  ls
+  685  git status -s 
+  686  git status -s
+  687  git add string.c
+  688  git add temp.txt
+  689  vi example
+  690  git status -s
+  691  git add example 
+  692  git status -s
+  693  git log
+  694  ls ~/.git
+  695  cd ~/.git
+  696  ls
+  697  cd config 
+  698  ls
+  699  vi config 
+  700  vi description 
+  701  vi hooks/
+  702  cd hooks/
+  703  ls
+  704  cd ..
+  705  ls
+  706  cd objects/
+  707  ls
+  708  cd pack/
+  709  ls
+  710  cd ..
+  711  ls
+  712  cd re
+  713  ls
+  714  cd ..
+  715  ls
+  716  cd refs/
+  717  ls
+  718  cd heads/
+  719  ls
+  720  cd ..
+  721  clear
+  722  ls
+  723  cd
+  724  ls
+  725  cd github_repo/
+  726  ls
+  727  git status -s
+  728  git add project.git/
+  729  git status -s
+  730  git push origin master
+  731  cd CMSSW_5_3_20
+  732  ls
+  733  cd src/
+  734  cd
+  735  ls
+  736  cd github_repo/
+  737  ls
+  738  git remote add origin https://github.com/ravijanjam/project.git
+  739  cmsenv
+  740  git
+  741  grid-proxy-init
+  742  /usr/local/bin/check_grid_service_sanity.sh
+  743  exit
+  744  ssh ce1
+  745  clear
+  746  ls
+  747  exit
+  748  ls
+  749  cd CMSSW_5_3_20
+  750  ls
+  751  cd src/
+  752  ls
+  753  cd Pi0Analysis/
+  754  ls
+  755  cd ..
+  756  ls
+  757  cd ..
+  758  ls
+  759  vi ~/.gitconfig
+  760  git config --list
+  761  cmsenv
+  762  git config --list
+  763  ld
+  764  ls
+  765  mkdir gitTesting
+  766  cd gitTesting/
+  767  ls
+  768  mkdir project.git
+  769  cd project.git
+  770  ls
+  771  git --bare init
+  772  ls
+  773  pwd
+  774  ssh-keygen
+  775  pwd
+  776  ssh-copy-id -i ~/.ssh/id_rsa.pub gituser@git.server.com
+  777  ssh-copy-id -i ~/.ssh/id_rsa.pub ravijanjam@git.server.com
+  778  vi ~/.ssh/id_rsa.pub 
+  779  gedit ~/.ssh/id_rsa.pub
+  780  git status -s
+  781  cd ..
+  782  ls
+  783  mkdir tom_repo
+  784  cd tom_repo
+  785  git init
+  786  echo 'TODO: Add contents for README' > README
+  787  git status -s
+  788  git add .
+  789  git status -s
+  790  git commit -m 'Initial commit'
+  791  git log
+  792  git remote add origin gituser@git.server.com:project.git
+  793  git push origin master
+  794  git remote add origin ravijanjam@git.server.com:project.git
+  795  git remote add origin git@gitserver:/opt/git/project.git
+  796  git push origin master
+  797  git daemon --reuseaddr --base-path=/opt/git/ /opt/git/
+  798  ls
+  799  cd ..
+  800  ls
+  801  git remote add origin https://github.com/ravijanjam/project.git
+  802  git push -u origin master
+  803  git init
+  804  ls
+  805  cd tom_repo/
+  806  ls
+  807  cd ~/.git
+  808  ls
+  809  cd ..
+  810  ls
+  811  cd CMSSW_5_3_20
+  812  ls
+  813  cd gitTesting/
+  814  ls
+  815  rm project.git/
+  816  rm -rf project.git/
+  817  mkdir project.git
+  818  cd project.git
+  819  git --bare init
+  820  git remote add origin git@gitserver:/opt/git/project.git
+  821  git push origin master
+  822  git remote add origin https://github.com/ravijanjam/project.git
+  823  git push -u origin master
+  824  git config --global core.editor vi
+  825  git config --global merge.tool vimdiff
+  826  git config --list
+  827  git config user.name
+  828  git config --global user.name "Ravi Janjam"
+  829  git config user.name
+  830  cd ..
+  831  ls
+  832  git init
+  833  git add *.c
+  834  git add README
+  835  vi testFile
+  836  git add testFile 
+  837  git commit -m 'Test File'
+  838  git clone git://github.com/ravijanjam/grit.git mygrit
+  839  ls
+  840  git remote add origin https://github.com/ravijanjam/test.git
+  841  git push -u origin master
+  842  cd ..
+  843  ls
+  844  cd src/
+  845  ls
+  846  git --bare init
+  847  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0
+  848  git push -u origin master
+  849  mkdir Pi0.git
+  850  git add .
+  851  clear
+  852  ls
+  853  grid-proxy-inti
+  854  grid-proxy-init
+  855  /usr/local/bin/check_grid_service_sanity.sh
+  856  clear
+  857  ls
+  858  cd ..
+  859  ls
+  860  cd src/
+  861  ls
+  862  cd HiAnalysisPi0/
+  863  ls
+  864  cd Pi0Analysis_/
+  865  ls
+  866  cd test/
+  867  l
+  868  ls
+  869  cd pbsCrab/
+  870  ls
+  871  ldir
+  872  cd crab_0_141001_144820/res/
+  873  ls
+  874  root -l output.root 
+  875  2..
+  876  ls
+  877  ldir
+  878  vi ecalflowntp_ppMinBiasHighMass_cfg.py
+  879  vi crab_pp.cfg 
+  880  cd crab_0_141001_144820/res/
+  881  ls
+  882  root output.root 
+  883  ls
+  884  cd CMSSW_5_3_20
+  885  ls
+  886  cd src/
+  887  ls
+  888  cd HiAnalysisPi0/
+  889  ls
+  890  cd Pi0Analysis_/
+  891  ls
+  892  ldir
+  893  scrab
+  894  cmsenv
+  895  cd test/
+  896  ls
+  897  cd pbsCrab/
+  898  ls
+  899  ldir
+  900  scrab
+  901  cmsenv
+  902  crab -status crab_0_141001_144820/
+  903  crab -getoutput /crab_0_141001_144820
+  904  crab -getoutput crab_0_141001_144820
+  905  crab -getoutput 1-134crab_0_141001_144820
+  906  crab -getoutput 1-134 crab_0_141001_144820
+  907  ls
+  908  ldir
+  909  cd crab_0_141001_144820/
+  910  cd res/
+  911  ls
+  912  ls *.root
+  913  hadd output.root *.root
+  914  cd ..
+  915  ls
+  916  cd res/
+  917  ls
+  918  ls *.root
+  919  rm output.root 
+  920  hadd output.root *.root
+  921  root output.root 
+  922  ls
+  923  ls *.root
+  924  ls
+  925  ls *.root
+  926  root -l p_NoReCal_15February2014V1_20_1_UdU.root
+  927  root -l pp_NoReCal_15February2014V1_82_1_24V.root
+  928  .q
+  929  pwd
+  930  cd CMSSW_5_3_20
+  931  ls
+  932  cd gitTesting/
+  933  ls
+  934  history 
+  935  clear
+  936  ls
+  937  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0
+  938  cmsenv
+  939  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0
+  940  git push -u origin master
+  941  ls
+  942  git --base init
+  943  git init 
+  944  cd .
+  945  cd ..
+  946  ls
+  947  cd src/
+  948  ls
+  949  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0
+  950  git remote add origin https://github.com/ravijanjam/Pi0.git
+  951  git 
+  952  git remote add origin https://github.com/ravijanjam/Pi0.git
+  953  git remote add https://github.com/ravijanjam/Pi0.git
+  954  git remote add -m https://github.com/ravijanjam/Pi0.git
+  955  git remote add origin https://github.com/ravijanjam/Pi0.git
+  956  git push -u origin master
+  957  git remote add origin https://github.com/ravijanjam/test.git/Pi0.git
+  958  git push -u origin master
+  959  git init
+  960  git add README.md
+  961  touch README.md
+  962  git init
+  963  git add README.md
+  964  git commit -m "first commit"
+  965  git status
+  966  git git remote add origin https://github.com/ravijanjam/test.git
+  967  git remote add origin https://github.com/ravijanjam/test.git
+  968  git push -u origin master
+  969  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0.git
+  970  git push -u origin master
+  971  ls
+  972  rm Pi0.git/
+  973  rm -rf Pi0.git/
+  974  git clone --bare my_project my_project.git
+  975  git clone --bare HiAnalysisPi0 HiAnalysisPi0.git
+  976  mkdir HiAnalysisPi0.git
+  977  git clone --bare HiAnalysisPi0 HiAnalysisPi0.git/
+  978  git add HiAnalysisPi0
+  979  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0.git
+  980  git status -s
+  981  git init
+  982  git status 
+  983  git --bare init
+  984  git status
+  985  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0.git
+  986  mkdir testing.git
+  987  git add testing.git/
+  988  git remote add origin https://github.com/ravijanjam/HiAnalysisPi0/testing.git
+  989  git remote add origin https://github.com/ravijanjam/testing.git
+  990  git remote add myorigin https://github.com/ravijanjam/testing.git
+  991  git push -u origin master
+  992  git push -u myorigin master
+  993  git remote add myorigin https://github.com/ravijanjam/HiAnalysisPi0.git
+  994  git remote add mmorigin https://github.com/ravijanjam/HiAnalysisPi0.git
+  995  git push -u mmorigin master
+  996  git remote add mmorigin https://github.com/ravijanjam/HiAnalysisPi0
+  997  git remote rm origin
+  998  git remote rm mmorigin
+  999  git remote rm myoriign
+ 1000  git remote rm myorigin
+ 1001  ls
+ 1002  cd CMSSW_5_3_20
+ 1003  ls
+ 1004  cd src/
+ 1005  ls
+ 1006  cd HeavyIonsAnalysis/
+ 1007  ls
+ 1008  cd ..
+ 1009  ls
+ 1010  cd HiAnalysisPi0
+ 1011  ls
+ 1012  cd Pi0Analysis_/
+ 1013  ls
+ 1014  cd test/
+ 1015  ls
+ 1016  cd pbsCrab/
+ 1017  ls
+ 1018  git remote add origin https://github.com/ravijanjam/test
+ 1019  git remote rm myorigin
+ 1020  git remote rm origin
+ 1021  git remote myorigin
+ 1022  git remote myorigin https://github.com/ravijanjam/test
+ 1023  git remote add myorigin https://github.com/ravijanjam/test
+ 1024  git push -u myorigin master
+ 1025  git remote add myorigin https://github.com/ravijanjam/test/
+ 1026  git push -u abc https://github.com/ravijanjam
+ 1027  git remote add abc https://github.com/ravijanjam/test/
+ 1028  git push -u abc master
+ 1029  history > temp.txt
